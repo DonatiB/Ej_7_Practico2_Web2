@@ -10,6 +10,7 @@ if(isset($_GET['action'])){
 
 $paramsURL = explode("/", $action);
 
+
 switch($paramsURL[0]){
     case'home':
         showHome();
@@ -20,8 +21,13 @@ switch($paramsURL[0]){
     case 'verFigura':
         showFiguras($paramsURL[1]);
     break;
-    case 'filtrado':                 
-        showFiltro($paramsURL[1]);                
+    case 'filtrado':
+        if(isset($paramsURL[1])){
+            showFiltro($paramsURL[1]);   
+        }else{
+            showHome();
+            echo "estamos en la b";
+        }               
     break;
     default:
         echo "ERROR";

@@ -1,3 +1,4 @@
+
 <?php
 function showHome(){
     echo '
@@ -17,26 +18,25 @@ function showHome(){
 
 
         <h4> <h4>
-        <form action="route.php?" method="GET">
+        <form id="form-area" method="GET">
             <label for="area">Buscar figuras con área menor a: </label>
-            <input id="area" type="number" name="area" placeholder="Introduzca área...">
+            <input type="number"  name="area" placeholder="Introduzca área...">
             <button type="submit">Buscar</button>
         </form>
+        <script src="ajax.js"></script>
         
     </body>
     </html>
     ';
 }
 
-
-if(isset($_GET['area'])){            
-    showFiltro($_GET['area']);
-}
 function showFiltro($area){
+
     require_once 'lib/Figuras.php';
     require_once 'lib/AreaFilter.php';
+    require_once 'ajax.js';
+   
     echo "<h1> FILTRO.PHP </h1>";
-    // instancio la clase Figuras para trabajar con las figuras del sistema
 
     $figuras = new Figuras();
 
