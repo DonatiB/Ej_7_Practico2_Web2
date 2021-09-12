@@ -1,7 +1,7 @@
 "use strict";
 
 let formCalc = document.querySelector("#form-area");
-let container = document.querySelector("#container");
+let containerArea = document.querySelector("#area");
 formCalc.addEventListener('submit', enviarDatos);
 
 async function enviarDatos(e){
@@ -10,11 +10,12 @@ async function enviarDatos(e){
     let area = formData.get('area');
 
 
-    let url = "filtradoo" + "/" + area;
+    let url = `filtrado/${area}`; 
+    console.log(url);
     let response = await fetch(url);
     let html = await response.text();
 
-    container.innerHTML = "Resultado es:" + html;
+    containerArea.innerHTML = "Area es:" + html;
 
 }
 

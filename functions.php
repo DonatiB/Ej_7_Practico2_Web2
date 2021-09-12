@@ -14,7 +14,7 @@ function showHome(){
 
         <h1>Figuras</h1>
 
-        <a href="route.php?action=list">Ver todas las figuras geométricas</a>
+        <a href="list">Ver todas las figuras geométricas</a>
 
 
         <h4> <h4>
@@ -23,6 +23,7 @@ function showHome(){
             <input type="number"  name="area" placeholder="Introduzca área...">
             <button type="submit">Buscar</button>
         </form>
+        <div id="area"> </div>
         <script src="ajax.js"></script>
         
     </body>
@@ -34,7 +35,6 @@ function showFiltro($area){
 
     require_once 'lib/Figuras.php';
     require_once 'lib/AreaFilter.php';
-    require_once 'ajax.js';
    
     echo "<h1> FILTRO.PHP </h1>";
 
@@ -44,7 +44,7 @@ function showFiltro($area){
     foreach($figuras->getBy(new AreaFilter($area)) as $figura) {
         echo "<li>" . 
                 $figura->ToString() . 
-                " | <a href='route.php?action=verFigura/". $figura->getId() . "'>VER </a>" .
+                " | <a href='verFigura/". $figura->getId() . "'>VER </a>" .
             "</li>";
     }
     echo "
@@ -67,7 +67,7 @@ function showList(){
     foreach($figuras->getAll() as $figura) {
         echo "<li>" . 
                 $figura->ToString() . 
-                " | <a href='route.php?action=verFigura/" . $figura->getId() . "'>VER </a>" .
+                " | <a href='verFigura/" . $figura->getId() . "'>VER </a>" .
             "</li>";
     }
 
